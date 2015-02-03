@@ -1,0 +1,54 @@
+<!DOCTYPE>
+<html>
+<head>
+<style>
+    .imageContainer{
+        text-align: center;
+        line-height:109px;
+        height:220px;
+        width:400px;
+    }
+    .listingSearchPropertyImage{
+        max-height: 100%;
+        max-width: 100%;
+    }
+</style>
+</head>
+<body>
+    <div class="imageContainer">
+        <img src="building1.png" class="listingSearchPropertyImage"/>
+    </div>
+    <div class="imageContainer">
+        <img src="742_Evergreen_Terrace.png" class="listingSearchPropertyImage"/>
+    </div>
+    <div class="imageContainer">
+        <img src="googlemaptest/building1.jpg" class="listingSearchPropertyImage"/>
+    </div>
+    <div class="imageContainer">
+        <img src="googlemaptest/building2.jpg" class="listingSearchPropertyImage"/>
+    </div>
+    <div class="imageContainer">
+        <img src="googlemaptest/building3.jpg" class="listingSearchPropertyImage"/>
+    </div>
+</body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script src="color-thief-master/dist/color-thief.min.js"></script>
+<script>
+    function colorChange($myImage){
+      var colorThief = new ColorThief();
+      
+      var cp = colorThief.getPalette($myImage[0], 8, 5);
+      
+      $myImage.parent().css('background-color', 'rgb('+cp[2][0]+','+cp[2][1]+','+cp[2][2]+')');
+    }
+    $(".listingSearchPropertyImage").hide();
+    $(document).ready(function() {
+      $(".listingSearchPropertyImage").each( function(){
+        colorChange($(this));
+        setTimeout(function(){
+            $(".listingSearchPropertyImage").fadeIn(1000);
+        }, 1000);
+      })
+    });
+</script>
+</html>
